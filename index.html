@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Мови та студенти</title>
+    <style>
+        .yellow-block {
+            background-color: yellow;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" onclick="loadLanguages()">Мови</a>
+    <a href="#" onclick="loadStudents()">Студенти</a>
+
+    <div class="yellow-block" id="content-block"></div>
+
+    <script>
+        function loadLanguages() {
+            fetch('1.txt')
+                .then(response => response.json())
+                .then(languages => {
+                    const contentBlock = document.getElementById('content-block');
+                    contentBlock.innerText = languages;
+                })
+                .catch(error => console.error(error));
+        }
+
+        function loadStudents() {
+            fetch('2.txt')
+                .then(response => response.json())
+                .then(students => {
+                    const contentBlock = document.getElementById('content-block');
+                    contentBlock.innerText = students;
+                })
+                .catch(error => console.error(error));
+        }
+    </script>
+</body>
+</html>
